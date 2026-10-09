@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Abdulmajeed Alshammari · Data Engineering & AI</title>
+  <meta name="description" content="Abdulmajeed Alshammari: Computer Engineer in Riyadh focused on data engineering and AI, with a strong foundation in embedded systems and IoT.">
+  <meta name="author" content="Abdulmajeed Alshammari">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Abdulmajeed Alshammari · Portfolio">
+  <meta property="og:description" content="Data Engineering and AI, built on a strong foundation in Embedded Systems and IoT. Riyadh, Saudi Arabia.">
+  <meta name="theme-color" content="#FAF7F0">
+  <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231E3A5F'/><text x='32' y='44' font-family='Georgia,serif' font-size='36' fill='%23FAF7F0' text-anchor='middle'>A</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#FAF7F0; --surface:#FFFEF9; --ink:#24221B; --muted:#6E675A;
+      --line:#E7E0D1; --accent:#1E3A5F; --accent-strong:#15293F;
+      --serif:"Source Serif 4", Georgia, "Times New Roman", serif;
+      --sans:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --arabic:"IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:92px}
+    body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased}
+    .wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{color:var(--accent-strong);text-decoration:underline}
+    :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+    h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.3;letter-spacing:-.01em}
+    section{padding:84px 0;border-top:1px solid var(--line)}
+    .eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+    h2{font-size:clamp(1.6rem,3vw,2.1rem);margin-bottom:26px}
+    .subhead{font-size:1.25rem;margin:52px 0 26px}
+    .lead{color:var(--muted);max-width:62ch;margin-bottom:34px}
+    img{max-width:100%}
+
+    body.lang-ar .en{display:none !important}
+    body:not(.lang-ar) .ar{display:none !important}
+    html[dir=rtl] body{font-family:var(--arabic)}
+    html[dir=rtl] h1,html[dir=rtl] h2,html[dir=rtl] h3,html[dir=rtl] .brand{font-family:var(--arabic);font-weight:600;letter-spacing:0}
+    html[dir=rtl] .eyebrow{letter-spacing:0}
+
+    .nav{position:sticky;top:0;z-index:50;background:rgba(250,247,240,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+    .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px 16px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap}
+    .brand{font-family:var(--serif);font-weight:600;font-size:1.05rem;color:var(--ink)}
+    .brand:hover{text-decoration:none;color:var(--accent)}
+    .nav ul{display:flex;flex-wrap:wrap;gap:4px 18px;list-style:none;font-size:.92rem}
+    .nav ul a{color:var(--muted);padding:4px 2px}
+    .nav ul a:hover{color:var(--ink);text-decoration:none}
+    .nav ul a.active{color:var(--accent);font-weight:600}
+    .lang-btn{border:1px solid var(--accent);background:var(--surface);border-radius:999px;padding:6px 16px;font-size:.85rem;font-weight:600;color:var(--accent);cursor:pointer;font-family:var(--arabic)}
+    .lang-btn:hover{background:var(--accent);color:var(--bg)}
+
+    .hero{border-top:none;padding:96px 0 90px}
+    .hero-grid{display:grid;grid-template-columns:1.55fr 1fr;gap:48px;align-items:center}
+    .hero .kicker{font-size:.9rem;color:var(--muted);margin-bottom:14px}
+    .hero h1{font-size:clamp(2.2rem,5.5vw,3.4rem);margin-bottom:14px}
+    .hero .role{font-size:clamp(1.05rem,2.2vw,1.28rem);color:var(--accent);font-weight:600;margin-bottom:20px}
+    .hero p.intro{max-width:60ch;margin-bottom:32px}
+    .hero-photo{margin:0}
+    .hero-photo img{width:100%;max-width:300px;margin-inline-start:auto;display:block;border-radius:16px;border:1px solid var(--line);box-shadow:0 12px 32px rgba(36,34,27,.08)}
+    .photo-pick{width:100%;max-width:300px;aspect-ratio:3/4;margin-inline-start:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border:1.5px dashed #C9C0AD;border-radius:16px;background:var(--surface);color:var(--muted);font-size:.88rem;line-height:1.5;cursor:pointer;padding:18px;text-align:center;font-family:var(--arabic)}
+    .photo-pick:hover{border-color:var(--accent);color:var(--accent)}
+    .cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:26px}
+    .btn{display:inline-block;padding:12px 22px;border-radius:10px;font-weight:600;font-size:.95rem;border:1.5px solid var(--accent);transition:background .15s,color .15s;cursor:pointer;font-family:inherit}
+    .btn:hover{text-decoration:none}
+    .btn-primary{background:var(--accent);color:var(--bg)}
+    .btn-primary:hover{background:var(--accent-strong);color:var(--bg)}
+    .btn-ghost{color:var(--accent);background:transparent}
+    .btn-ghost:hover{background:var(--accent);color:var(--bg)}
+    .status{font-size:.9rem;color:var(--muted);border-inline-start:3px solid var(--line);padding-inline-start:14px}
+
+    .about-grid{display:grid;grid-template-columns:1.55fr 1fr;gap:44px;align-items:start}
+    .about-grid p+p{margin-top:16px}
+    .facts{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px}
+    .facts h3{font-size:1rem;margin-bottom:14px}
+    .facts dl div{padding:9px 0;border-bottom:1px solid var(--line)}
+    .facts dl div:last-child{border-bottom:none}
+    .facts dt{font-size:.74rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+    html[dir=rtl] .facts dt{letter-spacing:0}
+    .facts dd{font-size:.95rem}
+
+    .job{position:relative;padding:0 0 38px 0;padding-inline-start:30px;border-inline-start:2px solid var(--line)}
+    .job:last-of-type{padding-bottom:6px}
+    .job::before{content:"";position:absolute;inset-inline-start:-7.5px;top:7px;width:13px;height:13px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
+    .job-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 16px}
+    .job h3{font-size:1.15rem}
+    .job .dates{font-size:.86rem;color:var(--muted);white-space:nowrap}
+    .job .role-title{font-size:.95rem;font-weight:600;color:var(--accent);margin:2px 0 10px}
+    .job ul,.project ul{list-style:none}
+    .job li,.project li{position:relative;padding-inline-start:18px;margin-bottom:7px}
+    .job li::before,.project li::before{content:"•";position:absolute;inset-inline-start:2px;color:var(--muted)}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px}
+    .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+    .card h3{font-size:1rem;margin-bottom:14px}
+    .chips{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{font-size:.84rem;padding:5px 12px;border:1px solid var(--line);border-radius:999px;background:var(--bg)}
+
+    .project{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:30px}
+    .project + .project{margin-top:26px}
+    .project h3{font-size:1.4rem;margin-bottom:6px}
+    .project .meta{font-size:.88rem;color:var(--muted);margin-bottom:14px}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+    .project h4{font-family:var(--sans);font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:22px 0 8px}
+    html[dir=rtl] .project h4{font-family:var(--arabic);letter-spacing:0}
+    .project-media{margin:20px 0 4px}
+    .project-media img{width:100%;display:block;border-radius:12px;border:1px solid var(--line)}
+    .project .links{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+    .more-projects{margin-top:24px;font-size:.95rem;color:var(--muted)}
+
+    .cert{display:flex;flex-wrap:wrap;align-items:center;gap:16px 22px;padding:20px 0;border-bottom:1px solid var(--line)}
+    .cert:last-of-type{border-bottom:none}
+    .cert-thumb img{width:112px;height:78px;object-fit:cover;border-radius:8px;border:1px solid var(--line);display:block}
+    .cert-body{flex:1 1 240px}
+    .cert h3{font-size:1.05rem}
+    .cert .org{font-size:.9rem;color:var(--muted)}
+    .cert .chips{justify-content:flex-end;flex:0 1 auto}
+    .cert-note{margin-top:18px;font-size:.92rem;color:var(--muted)}
+
+    .contact-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px}
+    .contact-meta{margin-top:26px;font-size:.95rem;color:var(--muted)}
+
+    footer{border-top:1px solid var(--line);padding:30px 0;font-size:.88rem;color:var(--muted)}
+    footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px}
+
+    .js .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+    .js .reveal.in{opacity:1;transform:none}
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      .js .reveal{opacity:1;transform:none;transition:none}
+    }
+    @media (max-width:760px){
+      section{padding:58px 0}
+      .hero{padding:56px 0 60px}
+      .hero-grid,.about-grid{grid-template-columns:1fr}
+      .hero-photo img,.photo-pick{max-width:210px;margin:30px 0 0}
+      .nav ul{font-size:.85rem;gap:2px 14px}
+      .cert .chips{justify-content:flex-start;width:100%}
+    }
+  </style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#home"><span class="en">Abdulmajeed Alshammari</span><span class="ar">عبدالمجيد الشمري</span></a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#about"><span class="en">About</span><span class="ar">نبذة</span></a></li>
+        <li><a href="#experience"><span class="en">Experience</span><span class="ar">الخبرات</span></a></li>
+        <li><a href="#skills"><span class="en">Tech Stack</span><span class="ar">المهارات</span></a></li>
+        <li><a href="#projects"><span class="en">Projects</span><span class="ar">المشاريع</span></a></li>
+        <li><a href="#certifications"><span class="en">Certifications</span><span class="ar">الشهادات</span></a></li>
+        <li><a href="#contact"><span class="en">Contact</span><span class="ar">تواصل</span></a></li>
+      </ul>
+    </nav>
+    <button id="langBtn" class="lang-btn" type="button">عربي</button>
+  </div>
+</header>
+
+<main>
+
+  <section id="home" class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="kicker"><span class="en">Computer Engineer · Riyadh, Saudi Arabia</span><span class="ar">مهندس حاسب آلي · الرياض، السعودية</span></p>
+        <h1><span class="en">Abdulmajeed Alshammari</span><span class="ar">عبدالمجيد فهد الشمري</span></h1>
+        <p class="role"><span class="en">Data Engineering &amp; AI, built on a strong foundation in Embedded Systems &amp; IoT</span><span class="ar">هندسة البيانات والذكاء الاصطناعي، على أساس متين في الأنظمة المدمجة وإنترنت الأشياء</span></p>
+        <p class="intro">
+          <span class="en">I build data pipelines and analytics that turn raw sensor and production-line data into decisions people can act on. My path started at the hardware level, with microcontrollers, sensors and SMT production lines, so I understand data from the moment it is generated to the moment it drives a decision.</span>
+          <span class="ar">أبني خطوط بيانات وتحليلات تحوّل بيانات الحساسات وخطوط الإنتاج الخام إلى قرارات قابلة للتنفيذ. بدأت رحلتي من مستوى العتاد، مع المتحكمات الدقيقة والحساسات وخطوط إنتاج SMT، لذلك أفهم البيانات من لحظة توليدها حتى لحظة اتخاذ القرار بها.</span>
+        </p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#projects"><span class="en">View my work</span><span class="ar">اطلع على أعمالي</span></a>
+          <a class="btn btn-ghost" href="https://drive.google.com/file/d/1O4GWrzWL89h9kbh-_hEv_LQh5AcPa5Mc/view" target="_blank" rel="noopener"><span class="en">Download CV</span><span class="ar">حمّل السيرة الذاتية</span></a>
+          <a class="btn btn-ghost" href="#contact"><span class="en">Get in touch</span><span class="ar">تواصل معي</span></a>
+        </div>
+        <p class="status">
+          <span class="en">Currently: R&amp;D Intern at Military Industries Corporation (MIC) · B.Sc. Computer Engineering, University of Hail (2026)</span>
+          <span class="ar">حاليًا: متدرب بحث وتطوير في المؤسسة العامة للصناعات العسكرية (MIC) · بكالوريوس هندسة الحاسب، جامعة حائل (2026)</span>
+        </p>
+      </div>
+      <figure class="hero-photo">
+        <img id="profilePhoto" src="assets/profile.jpg" alt="Abdulmajeed Alshammari" decoding="async">
+        <button id="photoPick" class="photo-pick" type="button" hidden><span class="en">Tap to add your photo</span><span class="ar">اضغط لإضافة صورتك من الألبوم</span></button>
+        <input id="photoInput" type="file" accept="image/*" hidden>
+      </figure>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <p class="eyebrow reveal"><span class="en">About me</span><span class="ar">نبذة عني</span></p>
+      <h2 class="reveal"><span class="en">From hardware to data</span><span class="ar">من العتاد إلى البيانات</span></h2>
+      <div class="about-grid">
+        <div class="reveal">
+          <p><span class="en">I'm a Computer Engineering graduate from the University of Hail (2026), based in Riyadh. I started on the hardware side of technology: embedded systems, IoT and electronics, building with Arduino, ESP32 and STM32, and working hands-on with sensors, communication protocols and real production lines.</span><span class="ar">أنا خريج هندسة حاسب آلي من جامعة حائل (2026)، وأقيم في الرياض. بدأت من الجانب العتادي للتقنية: الأنظمة المدمجة وإنترنت الأشياء والإلكترونيات، أبني بـ Arduino وESP32 وSTM32، وأعمل عمليًا مع الحساسات وبروتوكولات الاتصال وخطوط إنتاج حقيقية.</span></p>
+          <p><span class="en">Supervising SMT &amp; THT production lines at IUTech changed my direction: the lines generated a constant stream of quality and process data, and collecting, cleaning and analyzing that data is where I created the most value, identifying bottlenecks in real time and reducing downtime. Since then, my focus has been data engineering and AI: building reliable pipelines and turning raw data into insight.</span><span class="ar">الإشراف على خطوط إنتاج SMT وTHT في شركة أيوتك غيّر وجهتي: كانت الخطوط تولّد تدفقًا مستمرًا من بيانات الجودة والعمليات، وكان جمع تلك البيانات وتنظيفها وتحليلها هو المكان الذي صنعت فيه أكبر قيمة، باكتشاف الاختناقات لحظيًا وتقليل التوقفات. منذ ذلك الحين أصبح تركيزي على هندسة البيانات والذكاء الاصطناعي: بناء خطوط بيانات موثوقة وتحويل البيانات الخام إلى رؤى.</span></p>
+          <p><span class="en">Along the way I completed the Data Science &amp; AI Program at the Saudi Digital Academy, hands-on bootcamps at Tuwaiq Academy (Mechatronics, Microcontrollers &amp; ESP32), Cisco's IoT program and the SAFCSP drones program. Beyond the technical side, I led the Programming &amp; Games Club at university, a team of 30 members delivering 12 initiatives to 500+ students, and volunteered as a project supervisor at Fab Lab Hail. I value teamwork, clear communication and solving problems with people, not just code.</span><span class="ar">خلال هذه الرحلة أكملت برنامج علم البيانات والذكاء الاصطناعي من الأكاديمية السعودية الرقمية، ومعسكرات عملية في أكاديمية طويق (الميكاترونكس، وأساسيات المتحكمات وESP32)، وبرنامج إنترنت الأشياء من Cisco، وبرنامج أساسيات الدرونز من SAFCSP. وخارج الجانب التقني، قدت نادي البرمجة والألعاب في الجامعة بفريق من 30 عضوًا قدّمنا 12 مبادرة استفاد منها أكثر من 500 طالب، وتطوعت مشرف مشاريع في فاب لاب حائل. أؤمن بالعمل الجماعي والتواصل الواضح وحل المشكلات مع الناس، لا بالكود وحده.</span></p>
+        </div>
+        <aside class="facts reveal">
+          <h3><span class="en">Quick facts</span><span class="ar">معلومات سريعة</span></h3>
+          <dl>
+            <div><dt><span class="en">Location</span><span class="ar">الموقع</span></dt><dd><span class="en">Riyadh, Saudi Arabia</span><span class="ar">الرياض، السعودية</span></dd></div>
+            <div><dt><span class="en">Education</span><span class="ar">التعليم</span></dt><dd><span class="en">B.Sc. Computer Engineering, University of Hail, 2026</span><span class="ar">بكالوريوس هندسة الحاسب، جامعة حائل، 2026</span></dd></div>
+            <div><dt><span class="en">Current</span><span class="ar">حاليًا</span></dt><dd><span class="en">R&amp;D Intern, Military Industries Corporation</span><span class="ar">متدرب بحث وتطوير، المؤسسة العامة للصناعات العسكرية</span></dd></div>
+            <div><dt><span class="en">Focus</span><span class="ar">التركيز</span></dt><dd><span class="en">Data Engineering &amp; AI</span><span class="ar">هندسة البيانات والذكاء الاصطناعي</span></dd></div>
+            <div><dt><span class="en">Foundation</span><span class="ar">الأساس</span></dt><dd><span class="en">Embedded Systems &amp; IoT</span><span class="ar">الأنظمة المدمجة وإنترنت الأشياء</span></dd></div>
+            <div><dt><span class="en">Leadership</span><span class="ar">القيادة</span></dt><dd><span class="en">PG Club Leader · Fab Lab Project Supervisor</span><span class="ar">قائد نادي PG · مشرف مشاريع فاب لاب</span></dd></div>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <p class="eyebrow reveal"><span class="en">Experience</span><span class="ar">الخبرات</span></p>
+      <h2 class="reveal"><span class="en">Where I've worked</span><span class="ar">مسيرتي العملية</span></h2>
+      <p class="lead reveal"><span class="en">Roles across R&amp;D, production and research, all connected by hardware and data.</span><span class="ar">أدوار بين البحث والتطوير والإنتاج والبحث العلمي، يجمعها خيط واحد: العتاد والبيانات.</span></p>
+
+      <div class="job reveal">
+        <div class="job-head"><h3><span class="en">Military Industries Corporation (MIC)</span><span class="ar">المؤسسة العامة للصناعات العسكرية (MIC)</span></h3><span class="dates"><span class="en">Jun 2026 – Present</span><span class="ar">يونيو 2026 – الآن</span></span></div>
+        <p class="role-title"><span class="en">R&amp;D Intern</span><span class="ar">متدرب بحث وتطوير</span></p>
+        <ul>
+          <li><span class="en">Support embedded systems design and R&amp;D activities in a confidential, mission-critical environment.</span><span class="ar">أدعم تصميم الأنظمة المدمجة وأنشطة البحث والتطوير في بيئة سرّية وحساسة المهام.</span></li>
+          <li><span class="en">Collaborate on hardware and software integration tasks across multidisciplinary teams.</span><span class="ar">أتعاون في مهام تكامل العتاد مع البرمجيات ضمن فرق متعددة التخصصات.</span></li>
+        </ul>
+      </div>
+
+      <div class="job reveal">
+        <div class="job-head"><h3><span class="en">IUTech</span><span class="ar">شركة أيوتك (IUTech)</span></h3><span class="dates"><span class="en">Sep 2025 – Jun 2026</span><span class="ar">سبتمبر 2025 – يونيو 2026</span></span></div>
+        <p class="role-title"><span class="en">Production Supervisor · Part-time</span><span class="ar">مشرف إنتاج · دوام جزئي</span></p>
+        <ul>
+          <li><span class="en">Planned and supervised SMT &amp; THT production lines, coordinating workflow, mentoring operators and technicians, and enforcing quality and safety standards.</span><span class="ar">خططت وأشرفت على خطوط إنتاج SMT وTHT، بتنسيق سير العمل وتوجيه المشغلين والفنيين وتطبيق معايير الجودة والسلامة.</span></li>
+          <li><span class="en">Implemented digital manufacturing practices, integrating IoT-enabled systems for real-time monitoring of production metrics.</span><span class="ar">طبّقت ممارسات التصنيع الرقمي بدمج أنظمة إنترنت الأشياء للمراقبة اللحظية لمؤشرات الإنتاج.</span></li>
+          <li><span class="en">Built data pipelines and analyzed quality and soldering data to identify bottlenecks in real time, reduce downtime and improve overall efficiency.</span><span class="ar">بنيت خطوط بيانات وحللت بيانات الجودة واللحام لاكتشاف الاختناقات لحظيًا وتقليل التوقفات ورفع الكفاءة.</span></li>
+        </ul>
+      </div>
+
+      <div class="job reveal">
+        <div class="job-head"><h3><span class="en">Saudi Amateur Radio Society · Manarat Hail Space Center</span><span class="ar">الجمعية السعودية لهواة اللاسلكي · مركز منارة حائل للفضاء</span></h3><span class="dates"><span class="en">Aug 2024 – Apr 2025</span><span class="ar">أغسطس 2024 – أبريل 2025</span></span></div>
+        <p class="role-title"><span class="en">IoT Student Trainee</span><span class="ar">متدرب إنترنت الأشياء</span></p>
+        <ul>
+          <li><span class="en">Contributed to transforming Manarat Hail into a smart facility by implementing IoT-based monitoring and automation solutions.</span><span class="ar">أسهمت في تحويل منارة حائل إلى منشأة ذكية عبر تنفيذ حلول مراقبة وأتمتة قائمة على إنترنت الأشياء.</span></li>
+          <li><span class="en">Built pipelines between embedded devices and processing layers to trigger automated responses from real-time sensor data.</span><span class="ar">بنيت مسارات بين الأجهزة المدمجة وطبقات المعالجة لتفعيل استجابات آلية من بيانات الحساسات اللحظية.</span></li>
+          <li><span class="en">Helped organize and deliver hands-on IoT workshops introducing the community to practical, real-world applications.</span><span class="ar">شاركت في تنظيم وتقديم ورش عملية لتعريف المجتمع بإنترنت الأشياء وتطبيقاته الواقعية.</span></li>
+        </ul>
+      </div>
+
+      <div class="job reveal">
+        <div class="job-head"><h3><span class="en">University of Hail</span><span class="ar">جامعة حائل</span></h3><span class="dates"><span class="en">Dec 2023 – Dec 2024</span><span class="ar">ديسمبر 2023 – ديسمبر 2024</span></span></div>
+        <p class="role-title"><span class="en">Student Employee · Part-time</span><span class="ar">موظف طالب · دوام جزئي</span></p>
+        <ul>
+          <li><span class="en">Prepared laboratory setups of electronic components, sensors and microcontrollers for lab exercises and student projects.</span><span class="ar">جهزت إعدادات المختبرات من مكونات إلكترونية وحساسات ومتحكمات لتمارين ومشاريع الطلاب.</span></li>
+          <li><span class="en">Guided students in mounting, wiring and configuring their projects, verifying setups for accuracy and safety.</span><span class="ar">وجهت الطلاب في تركيب مشاريعهم وتوصيلها وضبطها، مع التحقق من الدقة والسلامة.</span></li>
+          <li><span class="en">Supported faculty research experiments and instructors during practical sessions, and maintained lab inventory.</span><span class="ar">دعمت تجارب أعضاء هيئة التدريس البحثية والمدربين في الجلسات العملية، وأدرت مخزون المختبر.</span></li>
+        </ul>
+      </div>
+
+      <h3 class="subhead reveal"><span class="en">Volunteering &amp; Leadership</span><span class="ar">التطوع والقيادة</span></h3>
+
+      <div class="job reveal">
+        <div class="job-head"><h3><span class="en">Fab Lab Hail</span><span class="ar">فاب لاب حائل</span></h3><span class="dates"><span class="en">Jul 2024 – Sep 2025</span><span class="ar">يوليو 2024 – سبتمبر 2025</span></span></div>
+        <p class="role-title"><span class="en">Project Supervisor · Volunteer</span><span class="ar">مشرف مشاريع · تطوع</span></p>
+        <ul>
+          <li><span class="en">Supervised member projects end to end: progress tracking, task and resource coordination, and technical guidance.</span><span class="ar">أشرفت على مشاريع الأعضاء من البداية للنهاية: متابعة التقدم وتنسيق المهام والموارد وتقديم الإرشاد التقني.</span></li>
+          <li><span class="en">Helped resolve technical and organizational challenges to ensure projects were completed effectively.</span><span class="ar">ساعدت في حل التحديات التقنية والتنظيمية لضمان إنجاز المشاريع بفاعلية.</span></li>
+        </ul>
+      </div>
+
+      <div class="job reveal">
+        <div class="job-head"><h3><a href="https://linkjar.co/PGCUOH" target="_blank" rel="noopener"><span class="en">Programming &amp; Games Club (PG Club)</span><span class="ar">نادي البرمجة والألعاب (PG Club)</span></a><span class="en"> · University of Hail</span><span class="ar"> · جامعة حائل</span></h3><span class="dates"><span class="en">May 2023 – Jul 2024</span><span class="ar">مايو 2023 – يوليو 2024</span></span></div>
+        <p class="role-title"><span class="en">Club Leader · Volunteer</span><span class="ar">قائد النادي · تطوع</span></p>
+        <ul>
+          <li><span class="en">Progressed from Head of Media to Club Leader, leading 5+ teams of 30 members across communication, task delegation and coordination.</span><span class="ar">تدرجت من رئيس الإعلام إلى قائد النادي، قائدًا لأكثر من 5 فرق تضم 30 عضوًا في التواصل وتوزيع المهام والتنسيق.</span></li>
+          <li><span class="en">Delivered 12 volunteer initiatives, 5 events and 7 technical workshops, benefiting 500+ students.</span><span class="ar">قدمنا 12 مبادرة تطوعية بين 5 فعاليات و7 ورش تقنية استفاد منها أكثر من 500 طالب.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <p class="eyebrow reveal"><span class="en">Tech stack</span><span class="ar">المهارات التقنية</span></p>
+      <h2 class="reveal"><span class="en">Tools I work with</span><span class="ar">الأدوات التي أعمل بها</span></h2>
+      <div class="grid">
+        <div class="card reveal">
+          <h3><span class="en">Languages</span><span class="ar">لغات البرمجة</span></h3>
+          <div class="chips"><span class="chip">Python</span><span class="chip">C++</span><span class="chip">Java</span><span class="chip">SQL</span></div>
+        </div>
+        <div class="card reveal">
+          <h3><span class="en">Data Engineering &amp; AI</span><span class="ar">هندسة البيانات والذكاء الاصطناعي</span></h3>
+          <div class="chips"><span class="chip">Data Pipelines</span><span class="chip">Data Cleaning</span><span class="chip">EDA</span><span class="chip">Machine Learning</span><span class="chip">Data Visualization</span></div>
+        </div>
+        <div class="card reveal">
+          <h3><span class="en">Cloud &amp; Databases</span><span class="ar">السحابة وقواعد البيانات</span></h3>
+          <div class="chips"><span class="chip">Microsoft Azure</span><span class="chip">SQL &amp; Database Management</span></div>
+        </div>
+        <div class="card reveal">
+          <h3><span class="en">Embedded &amp; IoT</span><span class="ar">الأنظمة المدمجة وإنترنت الأشياء</span></h3>
+          <div class="chips"><span class="chip">Arduino</span><span class="chip">ESP32</span><span class="chip">STM32</span><span class="chip">Sensor Integration</span><span class="chip">Communication Protocols</span><span class="chip">Soldering (IPC)</span><span class="chip">3D Modeling</span></div>
+        </div>
+        <div class="card reveal">
+          <h3><span class="en">Tools &amp; Practices</span><span class="ar">الأدوات والممارسات</span></h3>
+          <div class="chips"><span class="chip">Git</span><span class="chip"><span class="en">5S &amp; Continuous Improvement</span><span class="ar">5S والتحسين المستمر</span></span></div>
+        </div>
+        <div class="card reveal">
+          <h3><span class="en">Core strengths</span><span class="ar">نقاط القوة</span></h3>
+          <div class="chips"><span class="chip"><span class="en">Teamwork</span><span class="ar">عمل جماعي</span></span><span class="chip"><span class="en">Leadership</span><span class="ar">قيادة</span></span><span class="chip"><span class="en">Problem Solving</span><span class="ar">حل المشكلات</span></span><span class="chip"><span class="en">Critical Thinking</span><span class="ar">تفكير نقدي</span></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <p class="eyebrow reveal"><span class="en">Projects</span><span class="ar">المشاريع</span></p>
+      <h2 class="reveal"><span class="en">Selected work</span><span class="ar">أعمال مختارة</span></h2>
+
+      <article class="project reveal">
+        <h3><span class="en">Smart Fab Lab Monitoring System</span><span class="ar">نظام المراقبة الذكي لفاب لاب</span></h3>
+        <p class="meta"><span class="en">Tuwaiq Academy Mechatronics Bootcamp → Fab Lab · 2025</span><span class="ar">معسكر الميكاترونكس بأكاديمية طويق ← فاب لاب · 2025</span></p>
+        <div class="tags"><span class="chip">IoT</span><span class="chip">Data Pipeline</span><span class="chip">Cloud</span><span class="chip">Dashboards</span></div>
+        <figure class="project-media">
+          <img src="assets/projects/smart-fab-lab.jpg" alt="Smart Fab Lab Monitoring System dashboard" loading="lazy" onerror="this.parentElement.style.display='none'">
+        </figure>
+        <h4><span class="en">The problem</span><span class="ar">المشكلة</span></h4>
+        <p><span class="en">Fabrication-lab environments need continuous monitoring. Manual, periodic checks mean anomalies such as temperature drift or abnormal sensor readings get caught late, if at all.</span><span class="ar">بيئات معامل التصنيع تحتاج مراقبة مستمرة؛ الفحوصات اليدوية الدورية تعني اكتشاف الشذوذ، كانحراف الحرارة أو القراءات غير الطبيعية، متأخرًا إن اكتُشف أصلًا.</span></p>
+        <h4><span class="en">My role</span><span class="ar">دوري</span></h4>
+        <ul>
+          <li><span class="en">Developed the embedded layer: ESP32 with a suite of environmental sensors (DHT11 for temperature and humidity, and more) for real-time data acquisition.</span><span class="ar">طورت الطبقة المدمجة: ESP32 مع مجموعة حساسات بيئية (DHT11 للحرارة والرطوبة وغيرها) لالتقاط البيانات لحظيًا.</span></li>
+          <li><span class="en">Built a cloud-based data pipeline to synchronize sensor data for trend analysis and anomaly detection.</span><span class="ar">بنيت خط بيانات سحابيًا لمزامنة قراءات الحساسات لتحليل الاتجاهات واكتشاف الشذوذ.</span></li>
+          <li><span class="en">Implemented an interactive live dashboard with real-time alerts for room monitoring and performance tracking.</span><span class="ar">نفذت لوحة تحكم تفاعلية حية مع تنبيهات لحظية لمراقبة الغرفة ومتابعة الأداء.</span></li>
+        </ul>
+        <h4><span class="en">Tech stack</span><span class="ar">التقنيات المستخدمة</span></h4>
+        <div class="chips"><span class="chip">ESP32</span><span class="chip">DHT11 &amp; Sensors</span><span class="chip">Python</span><span class="chip">Cloud (Azure)</span><span class="chip">Real-time Dashboards</span></div>
+        <div class="links">
+          <!-- [عدّل] بدّل الرابط برابط مستودع المشروع نفسه -->
+          <a class="btn btn-ghost" href="https://github.com/Abdulmajeed-Fahad" target="_blank" rel="noopener"><span class="en">Source code on GitHub</span><span class="ar">الكود المصدري على GitHub</span></a>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <h3><span class="en">Mustame (MVP): Assistive Audio-Visual System</span><span class="ar">مُستمِع (MVP): نظام مساعد سمعي بصري</span></h3>
+        <p class="meta"><span class="en">University of Hail · Dec 2023 – 2024</span><span class="ar">جامعة حائل · ديسمبر 2023 – 2024</span></p>
+        <div class="tags"><span class="chip">Accessibility</span><span class="chip">IoT</span><span class="chip">Arduino</span><span class="chip">Sound Processing</span></div>
+        <figure class="project-media">
+          <img src="assets/projects/mustame.jpg" alt="Mustame assistive audio-visual system" loading="lazy" onerror="this.parentElement.style.display='none'">
+        </figure>
+        <h4><span class="en">The problem</span><span class="ar">المشكلة</span></h4>
+        <p><span class="en">People with hearing impairments can miss critical environmental sounds such as alarms, knocks and alerts, which reduces situational awareness and safety in everyday spaces.</span><span class="ar">قد يفوّت ذوو الإعاقة السمعية أصواتًا بيئية حرجة كالإنذارات والطرق والتنبيهات، ما يقلل الوعي بالمحيط والسلامة في الأماكن اليومية.</span></p>
+        <h4><span class="en">My role</span><span class="ar">دوري</span></h4>
+        <ul>
+          <li><span class="en">Built an MVP that monitors environmental sounds through sensors and sound-processing algorithms to identify critical auditory cues.</span><span class="ar">بنيت منتجًا أوليًا يراقب الأصوات البيئية عبر حساسات وخوارزميات معالجة صوت لتحديد الإشارات السمعية الحرجة.</span></li>
+          <li><span class="en">Translated detected cues into real-time visual alerts and on-screen text for the user.</span><span class="ar">حوّلت الإشارات المكتشفة إلى تنبيهات بصرية ونص فوري يظهر على الشاشة.</span></li>
+          <li><span class="en">Integrated hardware and software end to end for a responsive, data-driven experience.</span><span class="ar">دمجت العتاد والبرمجيات من الطرف إلى الطرف لتجربة متجاوبة قائمة على البيانات.</span></li>
+        </ul>
+        <h4><span class="en">Tech stack</span><span class="ar">التقنيات المستخدمة</span></h4>
+        <div class="chips"><span class="chip">Arduino</span><span class="chip">Sound Sensors</span><span class="chip">Signal Processing</span><span class="chip">Real-time Display</span></div>
+      </article>
+
+      <!-- [قالب مشروع جديد] انسخ أي <article class="project reveal"> كاملًا والصقه هنا،
+           وكرر لكل نص زوج: <span class="en">English</span><span class="ar">عربي</span>
+           واحفظ صورة المشروع في assets/projects/ بالاسم المكتوب في src -->
+
+      <p class="more-projects reveal"><span class="en">More projects are being documented. Meanwhile, browse my repositories on </span><span class="ar">مشاريع أخرى قيد التوثيق. في هذه الأثناء تصفح مستودعاتي على </span><a href="https://github.com/Abdulmajeed-Fahad" target="_blank" rel="noopener">GitHub</a>.</p>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <div class="wrap">
+      <p class="eyebrow reveal"><span class="en">Certifications &amp; training</span><span class="ar">الشهادات والدورات</span></p>
+      <h2 class="reveal"><span class="en">What I've trained in</span><span class="ar">ما تدربت عليه</span></h2>
+
+      <!-- احفظ صورة كل شهادة في assets/certs/ بالاسم المذكور وستظهر تلقائيًا -->
+      <div class="cert reveal">
+        <a class="cert-thumb" href="assets/certs/data-science-ai.jpg" target="_blank"><img src="assets/certs/data-science-ai.jpg" alt="Data Science and AI certificate" loading="lazy" onerror="this.parentElement.style.display='none'"></a>
+        <div class="cert-body"><h3><span class="en">Data Science &amp; AI Program</span><span class="ar">برنامج علم البيانات والذكاء الاصطناعي</span></h3><p class="org"><span class="en">Saudi Digital Academy (MCIT) · Nov 2024</span><span class="ar">الأكاديمية السعودية الرقمية (وزارة الاتصالات) · نوفمبر 2024</span></p></div>
+        <div class="chips"><span class="chip">Python</span><span class="chip">AI</span><span class="chip">Machine Learning</span><span class="chip">EDA</span></div>
+      </div>
+
+      <div class="cert reveal">
+        <a class="cert-thumb" href="assets/certs/cisco-iot.jpg" target="_blank"><img src="assets/certs/cisco-iot.jpg" alt="Cisco Introduction to IoT certificate" loading="lazy" onerror="this.parentElement.style.display='none'"></a>
+        <div class="cert-body"><h3><span class="en">Introduction to Internet of Things</span><span class="ar">مقدمة في إنترنت الأشياء</span></h3><p class="org"><span class="en">Cisco Networking Academy · Jun 2025</span><span class="ar">أكاديمية Cisco للشبكات · يونيو 2025</span></p></div>
+        <div class="chips"><span class="chip">IoT</span><span class="chip">AI</span><span class="chip">Digital Transformation</span></div>
+      </div>
+
+      <div class="cert reveal">
+        <a class="cert-thumb" href="assets/certs/tuwaiq-mechatronics.jpg" target="_blank"><img src="assets/certs/tuwaiq-mechatronics.jpg" alt="Tuwaiq Academy Mechatronics Bootcamp certificate" loading="lazy" onerror="this.parentElement.style.display='none'"></a>
+        <div class="cert-body"><h3><span class="en">Fundamentals of Mechatronics Bootcamp</span><span class="ar">معسكر أساسيات الميكاترونكس</span></h3><p class="org"><span class="en">Tuwaiq Academy · Jul 2025</span><span class="ar">أكاديمية طويق · يوليو 2025</span></p></div>
+        <div class="chips"><span class="chip">Microcontrollers</span><span class="chip">Electronics</span><span class="chip">3D Modeling</span><span class="chip">Soldering</span></div>
+      </div>
+
+      <div class="cert reveal">
+        <a class="cert-thumb" href="assets/certs/tuwaiq-esp32.jpg" target="_blank"><img src="assets/certs/tuwaiq-esp32.jpg" alt="Tuwaiq Academy ESP32 certificate" loading="lazy" onerror="this.parentElement.style.display='none'"></a>
+        <div class="cert-body"><h3><span class="en">Fundamentals of Microcontroller &amp; ESP32</span><span class="ar">أساسيات المتحكمات الدقيقة وESP32</span></h3><p class="org"><span class="en">Tuwaiq Academy · Jul 2025</span><span class="ar">أكاديمية طويق · يوليو 2025</span></p></div>
+        <div class="chips"><span class="chip">Embedded Programming</span><span class="chip">IoT</span></div>
+      </div>
+
+      <div class="cert reveal">
+        <a class="cert-thumb" href="assets/certs/safcsp-drones.jpg" target="_blank"><img src="assets/certs/safcsp-drones.jpg" alt="SAFCSP Fundamentals of Drones certificate" loading="lazy" onerror="this.parentElement.style.display='none'"></a>
+        <div class="cert-body"><h3><span class="en">Fundamentals of Drones Program</span><span class="ar">برنامج أساسيات الدرونز</span></h3><p class="org"><span class="en">SAFCSP · May 2025</span><span class="ar">الاتحاد السعودي للأمن السيبراني والبرمجة والدرونز · مايو 2025</span></p></div>
+        <div class="chips"><span class="chip">UAS / UAV</span><span class="chip">Sensors</span><span class="chip">Communication</span></div>
+      </div>
+
+      <div class="cert reveal">
+        <a class="cert-thumb" href="assets/certs/uoh-appreciation.jpg" target="_blank"><img src="assets/certs/uoh-appreciation.jpg" alt="University of Hail Certificate of Appreciation" loading="lazy" onerror="this.parentElement.style.display='none'"></a>
+        <div class="cert-body"><h3><span class="en">Certificate of Appreciation</span><span class="ar">شهادة شكر وتقدير</span></h3><p class="org"><span class="en">University of Hail · Jul 2024</span><span class="ar">جامعة حائل · يوليو 2024</span></p></div>
+        <div class="chips"><span class="chip"><span class="en">Communication</span><span class="ar">تواصل</span></span><span class="chip"><span class="en">Teamwork</span><span class="ar">عمل جماعي</span></span></div>
+      </div>
+
+      <p class="cert-note reveal"><span class="en">Full credentials are available on </span><span class="ar">جميع الاعتمادات متاحة على </span><a href="https://www.linkedin.com/in/abdulmajeed-al-shammari-2625a3287" target="_blank" rel="noopener">LinkedIn</a>.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <p class="eyebrow reveal"><span class="en">Contact</span><span class="ar">تواصل</span></p>
+      <h2 class="reveal"><span class="en">Let's talk</span><span class="ar">لنتحدث</span></h2>
+      <p class="lead reveal"><span class="en">Open to data engineering and AI opportunities, collaborations, and good conversations about hardware and data.</span><span class="ar">منفتح على فرص هندسة البيانات والذكاء الاصطناعي، والتعاون المشترك، والنقاشات الممتعة عن العتاد والبيانات.</span></p>
+      <div class="contact-links reveal">
+        <a class="btn btn-primary" href="mailto:majeed142425@gmail.com"><span class="en">Email me</span><span class="ar">راسلني</span></a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/abdulmajeed-al-shammari-2625a3287" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-ghost" href="https://github.com/Abdulmajeed-Fahad" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn btn-ghost" href="https://wa.me/qr/LLWRZ3CQZYEPI1" target="_blank" rel="noopener"><span class="en">WhatsApp</span><span class="ar">واتساب</span></a>
+        <a class="btn btn-ghost" href="https://x.com/rpplu2" target="_blank" rel="noopener">X</a>
+        <a class="btn btn-ghost" href="https://linktr.ee/abdulmajeed.alshammari" target="_blank" rel="noopener">Linktree</a>
+      </div>
+      <p class="contact-meta reveal">majeed142425@gmail.com · +966 53 266 5388 · <span class="en">Riyadh, Saudi Arabia</span><span class="ar">الرياض، السعودية</span></p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year"></span> <span class="en">Abdulmajeed Alshammari · Riyadh, Saudi Arabia</span><span class="ar">عبدالمجيد الشمري · الرياض، السعودية</span></span>
+    <span><span class="en">Hand-coded in HTML &amp; CSS. No frameworks, no trackers.</span><span class="ar">مكتوب يدويًا بـ HTML وCSS. بلا أطر عمل، بلا متتبعات.</span></span>
+  </div>
+</footer>
+
+<script>
+  document.documentElement.classList.add('js');
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // مبدّل اللغة: يقلب النصوص والاتجاه ويحفظ الاختيار
+  var langBtn = document.getElementById('langBtn');
+  function setLang(l){
+    var ar = (l === 'ar');
+    document.documentElement.lang = ar ? 'ar' : 'en';
+    document.documentElement.dir = ar ? 'rtl' : 'ltr';
+    document.body.classList.toggle('lang-ar', ar);
+    langBtn.textContent = ar ? 'English' : 'عربي';
+    document.title = ar ? 'عبدالمجيد الشمري · هندسة البيانات والذكاء الاصطناعي' : 'Abdulmajeed Alshammari · Data Engineering & AI';
+    try { localStorage.setItem('siteLang', l); } catch(e){}
+  }
+  langBtn.addEventListener('click', function(){
+    setLang(document.body.classList.contains('lang-ar') ? 'en' : 'ar');
+  });
+  var savedLang = 'en';
+  try { savedLang = localStorage.getItem('siteLang') || 'en'; } catch(e){}
+  setLang(savedLang);
+
+  // الصورة الشخصية: ملف assets/profile.jpg إن وُجد، وإلا زر اختيار من الألبوم (يُحفظ في متصفحك)
+  (function(){
+    var img = document.getElementById('profilePhoto');
+    var pick = document.getElementById('photoPick');
+    var input = document.getElementById('photoInput');
+    var saved = null;
+    try { saved = localStorage.getItem('profilePhoto'); } catch(e){}
+    img.addEventListener('error', function(){
+      if (saved) { img.src = saved; }
+      else { img.hidden = true; pick.hidden = false; }
+    }, { once: true });
+    pick.addEventListener('click', function(){ input.click(); });
+    input.addEventListener('change', function(){
+      var f = input.files && input.files[0];
+      if (!f) return;
+      var url = URL.createObjectURL(f);
+      var tmp = new Image();
+      tmp.onload = function(){
+        var max = 700, s = Math.min(1, max / tmp.width);
+        var c = document.createElement('canvas');
+        c.width = Math.round(tmp.width * s);
+        c.height = Math.round(tmp.height * s);
+        c.getContext('2d').drawImage(tmp, 0, 0, c.width, c.height);
+        var d = c.toDataURL('image/jpeg', 0.85);
+        img.src = d; img.hidden = false; pick.hidden = true;
+        try { localStorage.setItem('profilePhoto', d); } catch(e){}
+        URL.revokeObjectURL(url);
+      };
+      tmp.src = url;
+    });
+  })();
+
+  // ظهور تدريجي خفيف
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var ro = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
+    }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(function(el){ ro.observe(el); });
+  }
+
+  // تمييز القسم النشط في القائمة
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav ul a'));
+  var byId = new Map(links.map(function(a){ return [a.getAttribute('href').slice(1), a]; }));
+  var so = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if (e.isIntersecting && byId.has(e.target.id)) {
+        links.forEach(function(l){ l.classList.remove('active'); });
+        byId.get(e.target.id).classList.add('active');
+      }
+    });
+  }, { rootMargin: '-35% 0px -55% 0px' });
+  document.querySelectorAll('main section[id]').forEach(function(s){ so.observe(s); });
+</script>
+
+</body>
+</html>
