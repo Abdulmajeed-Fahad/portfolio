@@ -14,4 +14,4 @@ The workflow in `.github/workflows/pages.yml` deploys the site from the `main` b
 
 Project images live in `assets/projects/` (`drone-ppe.jpg` and `makeen.jpg` are included; add `smart-fab-lab.jpg` and `mustame.jpg`).
 
-Certificate images go in `assets/certs/` with the file names used in `index.html` (for example `data-science-ai.jpg`, `cisco-iot.jpg`, `tuwaiq-mechatronics.jpg`, `tuwaiq-esp32.jpg`, `safcsp-drones.jpg`, `uoh-appreciation.jpg`, `makeen-hackathon.jpg`, `tuwaiq-engineering-design.jpg`). Until an image is added, the certificate shows a badge icon instead.
+Certificate images go in `assets/certs/` with the file names used in `index.html` (for example `data-science-ai.jpg`, `cisco-iot.jpg`, `tuwaiq-mechatronics.jpg`, `tuwaiq-esp32.jpg`, `safcsp-drones.jpg`, `makeen-hackathon.jpg`, `tuwaiq-engineering-design.jpg`). Until an image is added, the certificate shows a badge icon instead.
