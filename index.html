@@ -156,6 +156,42 @@
     .note{margin:18px 0 6px;padding:14px 18px;border-radius:12px;background:var(--gold-soft);border-inline-start:3px solid var(--gold);font-size:.93rem}
     .note b{color:var(--gold)}
 
+
+    /* تكبير الصور عند الضغط */
+    .zoomable{cursor:zoom-in}
+    .media-hint{font-size:.82rem;color:var(--muted);margin-top:8px;text-align:center}
+    .lightbox{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.92);display:none;overflow:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+    .lightbox.open{display:block}
+    .lightbox .lb-stage{min-height:100%;min-width:100%;display:flex;align-items:center;justify-content:center;padding:56px 12px 20px;width:max-content;max-width:none}
+    .lightbox:not(.zoomed) .lb-stage{width:100%}
+    .lightbox img{display:block;max-width:100%;max-height:calc(100vh - 80px);border-radius:8px;cursor:zoom-in;background:#fff}
+    .lightbox.zoomed img{max-width:none;max-height:none;cursor:zoom-out}
+    .lb-close{position:fixed;top:12px;inset-inline-end:14px;z-index:201;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.6);color:#fff;font-size:1.5rem;line-height:1;cursor:pointer}
+    .lb-cap{position:fixed;top:18px;inset-inline-start:16px;inset-inline-end:70px;z-index:201;color:#eee;font-size:.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;pointer-events:none}
+
+    /* شريط الدورات والزيارات */
+    #talks[hidden]{display:none}
+    .marquee{overflow:hidden;direction:ltr;margin-top:8px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+    .marquee-track{display:flex;gap:18px;width:max-content;padding:6px 0 10px;animation:marquee var(--marquee-time,40s) linear infinite}
+    .marquee:hover .marquee-track,.marquee:focus-within .marquee-track,.marquee.paused .marquee-track{animation-play-state:paused}
+    @keyframes marquee{to{transform:translateX(-50%)}}
+    .talk{position:relative;flex:0 0 auto;width:280px;border:1px solid var(--line);border-radius:14px;background:var(--surface);overflow:hidden;cursor:pointer;text-align:start}
+    body.lang-ar .talk{direction:rtl}
+    .talk-photo{position:relative;aspect-ratio:4/3;background:var(--accent-soft);overflow:hidden}
+    .talk-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+    .talk-badge{position:absolute;top:10px;inset-inline-start:10px;z-index:2;font-size:.74rem;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--btn);color:var(--on-accent)}
+    html:not([data-theme=dark]) .talk-badge{color:#fff}
+    .talk-badge.visit{background:var(--gold);color:#121212}
+    .talk-info{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;justify-content:flex-end;gap:4px;padding:14px;background:linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.86));color:#fff;font-size:.86rem;line-height:1.55;opacity:0;transition:opacity .3s ease}
+    .talk-info .when{color:#E6C76A;font-size:.78rem}
+    .talk:hover .talk-info,.talk:focus-visible .talk-info,.talk.open .talk-info{opacity:1}
+    .talk:hover .talk-photo img,.talk.open .talk-photo img{transform:scale(1.05)}
+    .talk-title{padding:12px 14px 14px;font-family:var(--serif);font-weight:600;font-size:1rem;line-height:1.4}
+    body.lang-ar .talk-title{font-family:var(--arabic)}
+    @media (prefers-reduced-motion: reduce){
+      .marquee{overflow-x:auto}
+      .marquee-track{animation:none}
+    }
     .cert{display:flex;flex-wrap:wrap;align-items:center;gap:16px 22px;padding:20px 0;border-bottom:1px solid var(--line)}
     .cert:last-of-type{border-bottom:none}
     .cert-thumb img{width:112px;height:78px;object-fit:cover;border-radius:8px;border:1px solid var(--line);display:block}
@@ -210,6 +246,7 @@
         <li><a href="#experience"><span class="en">Experience</span><span class="ar">الخبرات</span></a></li>
         <li><a href="#skills"><span class="en">Tech Stack</span><span class="ar">المهارات</span></a></li>
         <li><a href="#projects"><span class="en">Projects</span><span class="ar">المشاريع</span></a></li>
+        <li id="talksNav" hidden><a href="#talks"><span class="en">Talks &amp; Visits</span><span class="ar">دورات وزيارات</span></a></li>
         <li><a href="#certifications"><span class="en">Certifications</span><span class="ar">الشهادات</span></a></li>
         <li><a href="#contact"><span class="en">Contact</span><span class="ar">تواصل</span></a></li>
       </ul>
@@ -546,6 +583,15 @@
     </div>
   </section>
 
+  <section id="talks" hidden>
+    <div class="wrap">
+      <p class="eyebrow reveal"><span class="en">Courses &amp; visits</span><span class="ar">دورات وزيارات</span></p>
+      <h2 class="reveal"><span class="en">Sessions I've presented</span><span class="ar">دورات وزيارات قدّمتها</span></h2>
+      <p class="lead reveal"><span class="en">Courses I delivered and visits I hosted as the presenter. Hover or tap a card for the details.</span><span class="ar">دورات قدّمتها وزيارات كنت المقدّم فيها. مرّر أو اضغط على البطاقة لعرض التفاصيل.</span></p>
+    </div>
+    <div class="marquee reveal" id="talksMarquee"><div class="marquee-track" id="talksTrack"></div></div>
+  </section>
+
   <section id="certifications">
     <div class="wrap">
       <p class="eyebrow reveal"><span class="en">Certifications &amp; training</span><span class="ar">الشهادات والدورات</span></p>
@@ -623,8 +669,23 @@
   </div>
 </footer>
 
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lb-close" id="lbClose" type="button" aria-label="Close">&times;</button>
+  <div class="lb-cap" id="lbCap"></div>
+  <div class="lb-stage"><img id="lbImg" alt=""></div>
+</div>
+
 <script>
   document.documentElement.classList.add('js');
+
+  // الدورات والزيارات: أضف عنصرًا لكل دورة أو زيارة. القسم يبقى مخفيًا ما دامت القائمة فارغة.
+  // type: 'course' دورة | 'visit' زيارة
+  var TALKS = [
+    // { type:'course', img:'assets/talks/example.jpg',
+    //   title:{en:'Intro to Arduino', ar:'مقدمة في الأردوينو'},
+    //   when:{en:'Fab Lab Hail · Mar 2025', ar:'فاب لاب حائل · مارس 2025'},
+    //   desc:{en:'Short description.', ar:'وصف مختصر.'} },
+  ];
 
   // مبدّل الوضع الفاتح/الداكن ويحفظ الاختيار
   var themeMeta = document.querySelector('meta[name=theme-color]');
@@ -659,6 +720,73 @@
   var savedLang = 'en';
   try { savedLang = localStorage.getItem('siteLang') || 'en'; } catch(e){}
   setLang(savedLang);
+
+  // عارض الصور: ضغطة تفتح الصورة، وضغطة ثانية تكبّرها بحجمها الكامل
+  var lb = document.getElementById('lightbox'), lbImg = document.getElementById('lbImg'), lbCap = document.getElementById('lbCap'), lbLast = null;
+  function openLb(src, cap){
+    lbLast = document.activeElement;
+    lbImg.src = src; lbImg.alt = cap || ''; lbCap.textContent = cap || '';
+    lb.classList.remove('zoomed'); lb.classList.add('open'); lb.scrollTop = 0; lb.scrollLeft = 0;
+    document.body.style.overflow = 'hidden';
+    document.getElementById('lbClose').focus();
+  }
+  function closeLb(){
+    lb.classList.remove('open','zoomed'); lbImg.removeAttribute('src');
+    document.body.style.overflow = '';
+    if (lbLast && lbLast.focus) lbLast.focus();
+  }
+  lbImg.addEventListener('click', function(e){ e.stopPropagation(); lb.classList.toggle('zoomed'); });
+  lb.addEventListener('click', closeLb);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && lb.classList.contains('open')) closeLb(); });
+  document.querySelectorAll('.project-media img').forEach(function(img){
+    img.classList.add('zoomable'); img.tabIndex = 0; img.setAttribute('role','button');
+    function go(){ openLb(img.getAttribute('data-full') || img.currentSrc || img.src, img.alt); }
+    img.addEventListener('click', go);
+    img.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+  });
+
+  // شريط الدورات والزيارات
+  (function(){
+    if (!TALKS.length) return;
+    var sec = document.getElementById('talks'), track = document.getElementById('talksTrack'), mq = document.getElementById('talksMarquee');
+    sec.hidden = false; document.getElementById('talksNav').hidden = false;
+    function span(cls, t){ var s = document.createElement('span'); s.className = cls; s.textContent = t || ''; return s; }
+    function both(parent, o){ o = o || {}; parent.appendChild(span('en', o.en)); parent.appendChild(span('ar', o.ar)); }
+    function card(t, clone){
+      var c = document.createElement('div'); c.className = 'talk';
+      if (clone) c.setAttribute('aria-hidden','true'); else { c.tabIndex = 0; c.setAttribute('role','button'); }
+      var ph = document.createElement('div'); ph.className = 'talk-photo';
+      var b = document.createElement('span'); b.className = 'talk-badge ' + (t.type === 'visit' ? 'visit' : 'course');
+      both(b, t.type === 'visit' ? {en:'Visit', ar:'زيارة'} : {en:'Course', ar:'دورة'});
+      ph.appendChild(b);
+      if (t.img) { var im = document.createElement('img'); im.src = t.img; im.loading = 'lazy'; im.alt = clone ? '' : ((t.title && t.title.en) || ''); im.onerror = function(){ im.remove(); }; ph.appendChild(im); }
+      var info = document.createElement('div'); info.className = 'talk-info';
+      var w = document.createElement('div'); w.className = 'when'; both(w, t.when); info.appendChild(w);
+      var d = document.createElement('div'); both(d, t.desc); info.appendChild(d);
+      ph.appendChild(info); c.appendChild(ph);
+      var ti = document.createElement('div'); ti.className = 'talk-title'; both(ti, t.title); c.appendChild(ti);
+      function act(){
+        var touch = window.matchMedia('(hover: none)').matches;
+        if (touch && !c.classList.contains('open')) {
+          track.querySelectorAll('.talk.open').forEach(function(o){ o.classList.remove('open'); });
+          c.classList.add('open'); mq.classList.add('paused'); return;
+        }
+        if (t.img) openLb(t.img, document.body.classList.contains('lang-ar') ? (t.title && t.title.ar) : (t.title && t.title.en));
+      }
+      c.addEventListener('click', function(e){ e.stopPropagation(); act(); });
+      c.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); act(); } });
+      return c;
+    }
+    var set = TALKS.slice();
+    while (set.length < 8) set = set.concat(TALKS);
+    set.forEach(function(t, i){ track.appendChild(card(t, i >= TALKS.length)); });
+    set.forEach(function(t){ track.appendChild(card(t, true)); });
+    track.style.setProperty('--marquee-time', (set.length * 6) + 's');
+    document.addEventListener('click', function(){
+      track.querySelectorAll('.talk.open').forEach(function(o){ o.classList.remove('open'); });
+      mq.classList.remove('paused');
+    });
+  })();
 
   // ظهور تدريجي خفيف
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
