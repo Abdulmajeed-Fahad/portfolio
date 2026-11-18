@@ -178,7 +178,7 @@
     .talk{position:relative;flex:0 0 auto;width:280px;border:1px solid var(--line);border-radius:14px;background:var(--surface);overflow:hidden;cursor:pointer;text-align:start}
     body.lang-ar .talk{direction:rtl}
     .talk-photo{position:relative;aspect-ratio:4/3;background:var(--accent-soft);overflow:hidden}
-    .talk-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+    .talk-photo img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;transition:transform .5s ease}
     .talk-badge{position:absolute;top:10px;inset-inline-start:10px;z-index:2;font-size:.74rem;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--btn);color:var(--on-accent)}
     html:not([data-theme=dark]) .talk-badge{color:#fff}
     .talk-badge.visit{background:var(--gold);color:#121212}
@@ -457,7 +457,8 @@
         <p class="meta"><span class="en">Sustainability in Education Hackathon, King Khalid University · Team project</span><span class="ar">هاكاثون الاستدامة في التعليم، جامعة الملك خالد · مشروع جماعي</span></p>
         <div class="tags"><span class="chip award">🏆 1st Place</span><span class="chip">NLP</span><span class="chip">RAG</span><span class="chip">EdTech</span></div>
         <figure class="project-media">
-          <img src="assets/projects/makeen.jpg" width="1400" height="852" decoding="async" alt="Makeen AI platform landing page" loading="lazy" onerror="this.parentElement.style.display='none'">
+          <img src="assets/projects/makeen-journey.jpg" width="1952" height="1024" decoding="async" alt="Makeen AI journey: hackathon venue, the platform, 1st place announcement, award on stage, team with the prize, certificate" loading="lazy" onerror="this.parentElement.style.display='none'">
+          <figcaption class="media-hint"><span class="en">1 Venue · 2 The platform · 3 1st place announcement · 4 Award on stage · 5 The team · 6 Certificate. Click to enlarge.</span><span class="ar">1 مقر الهاكاثون · 2 المنصة · 3 إعلان المركز الأول · 4 التتويج · 5 الفريق · 6 الشهادة. اضغط للتكبير.</span></figcaption>
         </figure>
         <h4><span class="en">The problem</span><span class="ar">المشكلة</span></h4>
         <p><span class="en">Much of what is explained in the lecture hall never reaches the slides, and Arabic-speaking students studying in English struggle with technical terms.</span><span class="ar">كثير مما يُشرح في القاعة ما يوصل للسلايدات، والطلاب العرب اللي يدرسون تخصصات علمية بالإنجليزي يواجهون صعوبة في المصطلحات.</span></p>
@@ -495,7 +496,8 @@
         <p class="meta"><span class="en">Computer vision · YOLOv8 · Real drone deployment</span><span class="ar">رؤية حاسوبية · YOLOv8 · تشغيل فعلي على درون</span></p>
         <div class="tags"><span class="chip">Computer Vision</span><span class="chip">Deep Learning</span><span class="chip">Drones</span><span class="chip">Safety</span></div>
         <figure class="project-media">
-          <img src="assets/projects/drone-ppe.jpg" width="1200" height="675" decoding="async" alt="YOLOv8 predictions detecting helmets, safety vests and missing PPE" loading="lazy" onerror="this.parentElement.style.display='none'">
+          <img src="assets/projects/drone-journey.jpg" width="1972" height="916" decoding="async" alt="Live detection of safety vests on the drone feed, Tello flight test, and model validation results" loading="lazy" onerror="this.parentElement.style.display='none'">
+          <figcaption class="media-hint"><span class="en">1 Live detection on the drone feed · 2 Tello flight test · 3 Model results on validation images. Click to enlarge.</span><span class="ar">1 الكشف المباشر على بث الدرون · 2 تجربة طيران Tello · 3 نتائج المودل على صور التحقق. اضغط للتكبير.</span></figcaption>
         </figure>
         <h4><span class="en">The problem</span><span class="ar">المشكلة</span></h4>
         <p><span class="en">Checking that every worker on a large site wears a helmet and safety vest is slow and easy to miss from the ground.</span><span class="ar">التأكد إن كل عامل في موقع كبير لابس الخوذة والسترة الواقية عملية بطيئة وسهل يفوت فيها شي من الأرض.</span></p>
@@ -682,17 +684,17 @@
   // type: 'course' دورة | 'visit' زيارة
   var TALKS = [
     { type:'course', img:'assets/talks/course-01.jpg',
-      title:{en:'Introduction to the Internet of Things (IoT)', ar:'مقدمة في إنترنت الأشياء (IoT)'},
-      when:{en:'Saudi Amateur Radio Society, Manarat Hail · Oct 2024', ar:'الجمعية السعودية لهواة اللاسلكي، منارات حائل · أكتوبر 2024'},
-      desc:{en:'An introductory IoT course I presented.', ar:'دورة تعريفية في إنترنت الأشياء قدّمتها.'} },
+      title:{en:'Introduction to the Internet of Things (IoT)', ar:'مقدمة إلى إنترنت الأشياء (IoT)'},
+      when:{en:'Saudi Amateur Radio Society, Manarat Hail · Oct 2024', ar:'الجمعية السعودية لهواة اللاسلكي، منارة حائل الفضائية · أكتوبر 2024'},
+      desc:{en:'A public course I delivered on IoT concepts, applications and its link to AI, with a hands-on part.', ar:'دورة مفتوحة للعامة قدّمتها عن مفاهيم إنترنت الأشياء وتطبيقاته وعلاقته بالذكاء الاصطناعي، مع جزء عملي.'} },
     { type:'visit', img:'assets/talks/visit-01.jpg',
-      title:{en:'Presenting "Journey of Social Interaction" to the Minister of Communications', ar:'عرض «رحلة التفاعل الاجتماعي» لوزير الاتصالات'},
+      title:{en:'Presenting "Journey of Social Interaction" to the Minister of MCIT', ar:'عرض مشروع Journey of Social Interaction لمعالي وزير الاتصالات'},
       when:{en:'Ministry of Communications and IT · Sep 2024', ar:'وزارة الاتصالات وتقنية المعلومات · سبتمبر 2024'},
-      desc:{en:'I presented the project to the Minister during his visit.', ar:'قدّمت المشروع لمعالي الوزير خلال زيارته.'} },
+      desc:{en:"I presented our team's video-game project to Eng. Abdullah Alswaha, who offered to support it.", ar:'قدّمت مشروع لعبتنا الإلكترونية أمام م. عبدالله السواحه ضمن فريق من أربعة، وأبدى استعداده لدعمه.'} },
     { type:'visit', img:'assets/talks/visit-02.jpg',
-      title:{en:'Presenting Informer to the Minister', ar:'عرض مشروع Informer لمعالي الوزير'},
-      when:{en:'Ministry of Communications and IT · University of Hail · Aug 2024', ar:'وزارة الاتصالات وتقنية المعلومات · جامعة حائل · أغسطس 2024'},
-      desc:{en:'I presented the Informer project to the Minister at the University of Hail.', ar:'قدّمت مشروع Informer لمعالي الوزير في جامعة حائل.'} },
+      title:{en:'Presenting the Informer system to the Minister', ar:'عرض نظام Informer أمام معالي الوزير'},
+      when:{en:'MCIT · University of Hail · Aug 2024', ar:'وزارة الاتصالات وتقنية المعلومات · جامعة حائل · أغسطس 2024'},
+      desc:{en:'Our three-person team presented a Python face-recognition and location system; I was one of the presenters.', ar:'عرضنا كفريق من ثلاثة نظام بايثون للتعرّف على الوجوه وتحديد مواقعها، وكنت أحد المقدّمين.'} },
   ];
 
   // مبدّل الوضع الفاتح/الداكن ويحفظ الاختيار
