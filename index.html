@@ -681,23 +681,18 @@
   // الدورات والزيارات: أضف عنصرًا لكل دورة أو زيارة. القسم يبقى مخفيًا ما دامت القائمة فارغة.
   // type: 'course' دورة | 'visit' زيارة
   var TALKS = [
-    // بيانات افتراضية مؤقتة، تُستبدل بالبيانات الحقيقية
-    { type:'course', img:'assets/talks/placeholder-course.svg',
-      title:{en:'Course title (example)', ar:'عنوان الدورة (مثال)'},
-      when:{en:'Venue · Month 2025', ar:'الجهة · الشهر 2025'},
-      desc:{en:'A one-line description of what the course covered and who attended.', ar:'وصف مختصر لمحتوى الدورة والفئة المستفيدة.'} },
-    { type:'visit', img:'assets/talks/placeholder-visit.svg',
-      title:{en:'Visit title (example)', ar:'عنوان الزيارة (مثال)'},
-      when:{en:'Venue · Month 2025', ar:'الجهة · الشهر 2025'},
-      desc:{en:'A one-line description of the visit and my role as presenter.', ar:'وصف مختصر للزيارة ودوري كمقدّم فيها.'} },
-    { type:'course', img:'assets/talks/placeholder-course.svg',
-      title:{en:'Second course (example)', ar:'دورة ثانية (مثال)'},
-      when:{en:'Venue · Month 2025', ar:'الجهة · الشهر 2025'},
-      desc:{en:'Placeholder text until the real details are added.', ar:'نص مؤقت إلى أن تُضاف التفاصيل الحقيقية.'} },
-    { type:'visit', img:'assets/talks/placeholder-visit.svg',
-      title:{en:'Second visit (example)', ar:'زيارة ثانية (مثال)'},
-      when:{en:'Venue · Month 2025', ar:'الجهة · الشهر 2025'},
-      desc:{en:'Placeholder text until the real details are added.', ar:'نص مؤقت إلى أن تُضاف التفاصيل الحقيقية.'} },
+    { type:'course', img:'assets/talks/course-01.jpg',
+      title:{en:'Introduction to the Internet of Things (IoT)', ar:'مقدمة في إنترنت الأشياء (IoT)'},
+      when:{en:'Saudi Amateur Radio Society, Manarat Hail · Oct 2024', ar:'الجمعية السعودية لهواة اللاسلكي، منارات حائل · أكتوبر 2024'},
+      desc:{en:'An introductory IoT course I presented.', ar:'دورة تعريفية في إنترنت الأشياء قدّمتها.'} },
+    { type:'visit', img:'assets/talks/visit-01.jpg',
+      title:{en:'Presenting "Journey of Social Interaction" to the Minister of Communications', ar:'عرض «رحلة التفاعل الاجتماعي» لوزير الاتصالات'},
+      when:{en:'Ministry of Communications and IT · Sep 2024', ar:'وزارة الاتصالات وتقنية المعلومات · سبتمبر 2024'},
+      desc:{en:'I presented the project to the Minister during his visit.', ar:'قدّمت المشروع لمعالي الوزير خلال زيارته.'} },
+    { type:'visit', img:'assets/talks/visit-02.jpg',
+      title:{en:'Presenting Informer to the Minister', ar:'عرض مشروع Informer لمعالي الوزير'},
+      when:{en:'Ministry of Communications and IT · University of Hail · Aug 2024', ar:'وزارة الاتصالات وتقنية المعلومات · جامعة حائل · أغسطس 2024'},
+      desc:{en:'I presented the Informer project to the Minister at the University of Hail.', ar:'قدّمت مشروع Informer لمعالي الوزير في جامعة حائل.'} },
   ];
 
   // مبدّل الوضع الفاتح/الداكن ويحفظ الاختيار
@@ -772,7 +767,7 @@
       var b = document.createElement('span'); b.className = 'talk-badge ' + (t.type === 'visit' ? 'visit' : 'course');
       both(b, t.type === 'visit' ? {en:'Visit', ar:'زيارة'} : {en:'Course', ar:'دورة'});
       ph.appendChild(b);
-      if (t.img) { var im = document.createElement('img'); im.src = t.img; im.loading = 'lazy'; im.alt = clone ? '' : ((t.title && t.title.en) || ''); im.onerror = function(){ im.remove(); }; ph.appendChild(im); }
+      var im = null; if (t.img) { im = document.createElement('img'); im.src = t.img; im.loading = 'lazy'; im.alt = clone ? '' : ((t.title && t.title.en) || ''); im.onerror = function(){ if (!im.dataset.fb) { im.dataset.fb = 1; im.src = 'assets/talks/placeholder-' + (t.type === 'visit' ? 'visit' : 'course') + '.svg'; } else { im.remove(); im = null; } }; ph.appendChild(im); }
       var info = document.createElement('div'); info.className = 'talk-info';
       var w = document.createElement('div'); w.className = 'when'; both(w, t.when); info.appendChild(w);
       var d = document.createElement('div'); both(d, t.desc); info.appendChild(d);
@@ -784,7 +779,7 @@
           track.querySelectorAll('.talk.open').forEach(function(o){ o.classList.remove('open'); });
           c.classList.add('open'); mq.classList.add('paused'); return;
         }
-        if (t.img) openLb(t.img, document.body.classList.contains('lang-ar') ? (t.title && t.title.ar) : (t.title && t.title.en));
+        if (im && !im.dataset.fb) openLb(im.currentSrc || im.src, document.body.classList.contains('lang-ar') ? (t.title && t.title.ar) : (t.title && t.title.en));
       }
       c.addEventListener('click', function(e){ e.stopPropagation(); act(); });
       c.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); act(); } });
