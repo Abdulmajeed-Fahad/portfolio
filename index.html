@@ -681,10 +681,23 @@
   // الدورات والزيارات: أضف عنصرًا لكل دورة أو زيارة. القسم يبقى مخفيًا ما دامت القائمة فارغة.
   // type: 'course' دورة | 'visit' زيارة
   var TALKS = [
-    // { type:'course', img:'assets/talks/example.jpg',
-    //   title:{en:'Intro to Arduino', ar:'مقدمة في الأردوينو'},
-    //   when:{en:'Fab Lab Hail · Mar 2025', ar:'فاب لاب حائل · مارس 2025'},
-    //   desc:{en:'Short description.', ar:'وصف مختصر.'} },
+    // بيانات افتراضية مؤقتة، تُستبدل بالبيانات الحقيقية
+    { type:'course', img:'assets/talks/placeholder-course.svg',
+      title:{en:'Course title (example)', ar:'عنوان الدورة (مثال)'},
+      when:{en:'Venue · Month 2025', ar:'الجهة · الشهر 2025'},
+      desc:{en:'A one-line description of what the course covered and who attended.', ar:'وصف مختصر لمحتوى الدورة والفئة المستفيدة.'} },
+    { type:'visit', img:'assets/talks/placeholder-visit.svg',
+      title:{en:'Visit title (example)', ar:'عنوان الزيارة (مثال)'},
+      when:{en:'Venue · Month 2025', ar:'الجهة · الشهر 2025'},
+      desc:{en:'A one-line description of the visit and my role as presenter.', ar:'وصف مختصر للزيارة ودوري كمقدّم فيها.'} },
+    { type:'course', img:'assets/talks/placeholder-course.svg',
+      title:{en:'Second course (example)', ar:'دورة ثانية (مثال)'},
+      when:{en:'Venue · Month 2025', ar:'الجهة · الشهر 2025'},
+      desc:{en:'Placeholder text until the real details are added.', ar:'نص مؤقت إلى أن تُضاف التفاصيل الحقيقية.'} },
+    { type:'visit', img:'assets/talks/placeholder-visit.svg',
+      title:{en:'Second visit (example)', ar:'زيارة ثانية (مثال)'},
+      when:{en:'Venue · Month 2025', ar:'الجهة · الشهر 2025'},
+      desc:{en:'Placeholder text until the real details are added.', ar:'نص مؤقت إلى أن تُضاف التفاصيل الحقيقية.'} },
   ];
 
   // مبدّل الوضع الفاتح/الداكن ويحفظ الاختيار
