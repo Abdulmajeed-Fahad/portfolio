@@ -588,8 +588,8 @@
   <section id="talks" hidden>
     <div class="wrap">
       <p class="eyebrow reveal"><span class="en">Courses &amp; visits</span><span class="ar">دورات وزيارات</span></p>
-      <h2 class="reveal"><span class="en">Sessions I've presented</span><span class="ar">دورات وزيارات قدّمتها</span></h2>
-      <p class="lead reveal"><span class="en">Courses I delivered and visits I hosted as the presenter. Hover or tap a card for the details.</span><span class="ar">دورات قدّمتها وزيارات كنت المقدّم فيها. مرّر أو اضغط على البطاقة لعرض التفاصيل.</span></p>
+      <h2 class="reveal"><span class="en">Sessions &amp; official visits</span><span class="ar">دورات وزيارات رسمية</span></h2>
+      <p class="lead reveal"><span class="en">Courses I delivered and official visits I presented at or took part in. Hover or tap a card for the details, and click it to see the photos.</span><span class="ar">دورات قدّمتها، وزيارات رسمية قدّمت فيها أو شاركت بها. مرّر أو المس البطاقة لعرض التفاصيل، واضغط عليها لعرض الصور.</span></p>
     </div>
     <div class="marquee reveal" id="talksMarquee"><div class="marquee-track" id="talksTrack"></div></div>
   </section>
@@ -683,18 +683,27 @@
   // الدورات والزيارات: أضف عنصرًا لكل دورة أو زيارة. القسم يبقى مخفيًا ما دامت القائمة فارغة.
   // type: 'course' دورة | 'visit' زيارة
   var TALKS = [
-    { type:'course', img:'assets/talks/course-01.jpg',
-      title:{en:'Introduction to the Internet of Things (IoT)', ar:'مقدمة إلى إنترنت الأشياء (IoT)'},
+    // الأحدث أولًا. img صورة البطاقة، full الصورة المجمّعة اللي تنفتح عند الضغط
+    { type:'visit', img:'assets/talks/visit-03.jpg',
+      title:{en:"Hail Region Emir receives University of Hail staff and students", ar:'استقبال أمير منطقة حائل لمنسوبي وطلبة جامعة حائل'},
+      when:{en:'University of Hail · Sep 2025', ar:'جامعة حائل · سبتمبر 2025'},
+      desc:{en:'I was selected to take part in the meeting, which showcased the work of the College of Computer Science and Engineering and launched an AR initiative.', ar:'اختِرت للمشاركة في اللقاء الذي استُعرضت فيه جهود كلية علوم وهندسة الحاسب وأُطلقت فيه مبادرة بتقنيات الواقع المعزز.'} },
+    { type:'course', img:'assets/talks/course-02.jpg', full:'assets/talks/course-02-full.jpg',
+      title:{en:'Introduction to the Internet of Things (IoT)', ar:'مقدمة في إنترنت الأشياء (IoT)'},
+      when:{en:'College Fab Lab · Oct 2024', ar:'فاب لاب الكلية · أكتوبر 2024'},
+      desc:{en:'A course I delivered on what IoT is, its benefits, examples, its link to AI and its challenges.', ar:'دورة قدّمتها عن مفهوم إنترنت الأشياء وفوائده وأمثلته وعلاقته بالذكاء الاصطناعي وتحدياته.'} },
+    { type:'course', img:'assets/talks/course-01.jpg', full:'assets/talks/course-01-full.jpg',
+      title:{en:'Introduction to the Internet of Things (IoT): public evening', ar:'مقدمة إلى إنترنت الأشياء (IoT): أمسية عامة'},
       when:{en:'Saudi Amateur Radio Society, Manarat Hail · Oct 2024', ar:'الجمعية السعودية لهواة اللاسلكي، منارة حائل الفضائية · أكتوبر 2024'},
       desc:{en:'A public course I delivered on IoT concepts, applications and its link to AI, with a hands-on part.', ar:'دورة مفتوحة للعامة قدّمتها عن مفاهيم إنترنت الأشياء وتطبيقاته وعلاقته بالذكاء الاصطناعي، مع جزء عملي.'} },
     { type:'visit', img:'assets/talks/visit-01.jpg',
       title:{en:'Presenting "Journey of Social Interaction" to the Minister of MCIT', ar:'عرض مشروع Journey of Social Interaction لمعالي وزير الاتصالات'},
       when:{en:'Ministry of Communications and IT · Sep 2024', ar:'وزارة الاتصالات وتقنية المعلومات · سبتمبر 2024'},
       desc:{en:"I presented our team's video-game project to Eng. Abdullah Alswaha, who offered to support it.", ar:'قدّمت مشروع لعبتنا الإلكترونية أمام م. عبدالله السواحه ضمن فريق من أربعة، وأبدى استعداده لدعمه.'} },
-    { type:'visit', img:'assets/talks/visit-02.jpg',
+    { type:'visit', img:'assets/talks/visit-02.jpg', full:'assets/talks/visit-02-full.jpg',
       title:{en:'Presenting the Informer system to the Minister', ar:'عرض نظام Informer أمام معالي الوزير'},
       when:{en:'MCIT · University of Hail · Aug 2024', ar:'وزارة الاتصالات وتقنية المعلومات · جامعة حائل · أغسطس 2024'},
-      desc:{en:'Our three-person team presented a Python face-recognition and location system; I was one of the presenters.', ar:'عرضنا كفريق من ثلاثة نظام بايثون للتعرّف على الوجوه وتحديد مواقعها، وكنت أحد المقدّمين.'} },
+      desc:{en:'During the Minister\'s tour of the university labs, our three-person team presented a Python face-recognition and location system; I was one of the presenters.', ar:'خلال جولة معالي الوزير في معامل الجامعة، عرضنا كفريق من ثلاثة نظام بايثون للتعرّف على الوجوه وتحديد مواقعها، وكنت أحد المقدّمين.'} },
   ];
 
   // مبدّل الوضع الفاتح/الداكن ويحفظ الاختيار
@@ -781,7 +790,7 @@
           track.querySelectorAll('.talk.open').forEach(function(o){ o.classList.remove('open'); });
           c.classList.add('open'); mq.classList.add('paused'); return;
         }
-        if (im && !im.dataset.fb) openLb(im.currentSrc || im.src, document.body.classList.contains('lang-ar') ? (t.title && t.title.ar) : (t.title && t.title.en));
+        if (im && !im.dataset.fb) openLb(t.full || im.currentSrc || im.src, document.body.classList.contains('lang-ar') ? (t.title && t.title.ar) : (t.title && t.title.en));
       }
       c.addEventListener('click', function(e){ e.stopPropagation(); act(); });
       c.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); act(); } });
